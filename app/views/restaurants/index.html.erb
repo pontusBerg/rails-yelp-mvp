@@ -1,0 +1,22 @@
+<div class = "grid-main" style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
+<% @restaurants.each do |restaurant| %>
+<h2 style="font-size:22px"><%= restaurant.name %></h2>
+<h3 style="font-size:16px"><%= restaurant.address %></h3>
+<h3 style="font-size:16px"><%= restaurant.phone_number %></h3>
+<h3 style="font-size:16px"><%= restaurant.category %></h3>
+<ul>
+<% restaurant.reviews.each do |rev| %>
+<li style="font-size:16px"><%= rev.rating %></li>
+<% end %>
+</ul>
+<%= link_to "Details", restaurant_path(restaurant) %>
+<%= link_to "Delete", restaurant_path(restaurant),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+<% end %>
+</div>
+
+
+<%= link_to "New Restaurant", new_restaurant_path %>
+
+
